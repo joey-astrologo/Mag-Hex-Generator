@@ -131,14 +131,15 @@ def main():
     if levels > 200:
       print("Warning, level exceeds 200")
 
+    # d9 byte in unkown function (number seems arbitrary)
     bytes_list = ['02', mag, to_hex(levels), 'd9']
     for stat in stat_list:
         exp_byte, lvl_byte = level_to_hex_bytes(stat)
         bytes_list.append(exp_byte)
         bytes_list.append(lvl_byte)
 
-    print("Item Code: {0} {1} {2}".format(bytes_list[0], bytes_list[1], bytes_list[2]))
-    print("Parameters: {0} ".format(",".join(bytes_list[3:])))
+    print("Item Code: {0}".format(", ".join(bytes_list[:3])))
+    print("Parameters: {0} ".format(", ".join(bytes_list[3:])))
 
 
 if __name__ == '__main__':
